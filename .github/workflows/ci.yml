@@ -31,6 +31,13 @@ jobs:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
         env: # Or as an environment variable
           credentials: ${{ secrets.AZURE_CREDENTIALS }}
+     # Get Secrets from Key Vault
+      - uses: Azure/get-keyvault-secrets@v1 
+        name: Get Key Vault Secrets
+        with: 
+          keyvault: AzKeyVault1010
+          secrets: 'sourceSubscriptionId ,factoryDirectory1 ,sourceResourceGroupName ,sourceFactoryName1, artifactName'
+        id: getSecrets1
       - name: Azure CLI script
         uses: azure/CLI@v1
         with:
@@ -46,3 +53,4 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+          echo ${{ steps.getSecrets2.outputs.sourceSubscriptionId }}
