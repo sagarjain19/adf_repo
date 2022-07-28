@@ -77,9 +77,9 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+          enable-AzPSSession: true
         env: # Or as an environment variable
           credentials: ${{ secrets.AZURE_CREDENTIALS }}
-          enable-AzPSSession: true 
       # Validate ARM Template
       - name: Validate Deployment
         uses:  azure/arm-deploy@v1
