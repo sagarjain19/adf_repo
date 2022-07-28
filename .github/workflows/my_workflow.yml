@@ -23,7 +23,7 @@ env:
   sourceFactoryName1: adfdemo1010
   sourceSubscriptionId: 24e4b4be-7875-429e-9548-fdc3241c1683
   sourceResourceGroupName: rgdemo101
-  targetFactoryName1    : adedemo2020
+  targetFactoryName1: adedemo2020
   targetSubscriptionId: 24e4b4be-7875-429e-9548-fdc3241c1683
   targetResourceGroupName: rgdemo101
 jobs:
@@ -63,7 +63,7 @@ jobs:
           path: ${{ env.artifactName }}
   deploy:
     needs: validate_and_generate
-    environment: non-production # !! Change depending on target environment
+    #environment: non-production # !! Change depending on target environment
     runs-on: ubuntu-latest
     steps:
       # Download ARM Template from Workflow Artifacts
@@ -76,7 +76,7 @@ jobs:
       - name: Azure Login
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }} 
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
         env: # Or as an environment variable
           credentials: ${{ secrets.AZURE_CREDENTIALS }}
           enable-AzPSSession: true 
